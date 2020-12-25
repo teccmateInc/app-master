@@ -1,0 +1,44 @@
+.modal-content {
+  background-color: $light-grey;
+}
+
+.modal-header button.close {
+  font-size: 35px;
+}
+
+h4.modal-title {
+  font-size: 24px;
+}
+
+.modal-text {
+  padding-bottom: 10px;
+}
+
+.modal-xl {
+  width: 80%;
+}
+
+.grid-space {
+  padding: 10px;
+}
+
+.row-background-color {
+  background-color: $light-grey;
+}
+
+.StripeElement {
+  display: block;
+  margin: 10px 0 20px 0;
+  padding: 10px 14px;
+  box-shadow: 0 0 0 0.1rem rgba(204, 204, 204, 1);
+  border-radius: 4px;
+  background: white;
+}
+
+.StripeElement--focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}

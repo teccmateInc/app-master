@@ -1,0 +1,90 @@
+.tbl-header {
+  background: #000000;
+  color: #f0f8ff;
+  text-align: center;
+}
+
+.react-bootstrap-table {
+  max-height: 18.3rem;
+  overflow: auto;
+}
+
+.filter-label {
+  background: white;
+  margin: 10px -5px -6px;
+}
+
+.react-bootstrap-table {
+  input {
+    &:focus {
+      box-shadow: none;
+      border-color: snow;
+    }
+
+    border-color: snow;
+  }
+
+  th:last-child {
+    padding: 30px 0;
+  }
+}
+
+.tbl-row:hover {
+  background-color: rgb(255, 227, 190) !important;
+}
+
+.policy-label {
+  label {
+    background: #c9d0d6ba;
+    margin: 0.5rem 0;
+    text-align: end;
+  }
+
+  input {
+    background: #c9d0d6ba !important;
+    margin: 0.45rem 0 1rem !important;
+  }
+}
+
+.dropdown {
+  background: #c9d0d6ba !important;
+  margin: 0.45rem 0 1rem !important;
+}
+
+.dropdown-toggle {
+  text-align: end;
+}
+
+.add-policy {
+  background: #ff7700 !important;
+  border-radius: 8px !important;
+  color: #1a1ac1 !important;
+  border-color: #ff7700 !important;
+}
+
+button.add-policy:focus {
+  box-shadow: 0 0 0 0.2rem #ffb22680 !important;
+}
+
+.add-policy svg {
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 2px;
+  font-size: 1.2rem;
+  margin: 0 0.5rem 0 0;
+  background: #ffffff;
+  color: #ff7700;
+}
+
+.comp-header {
+  height: 3rem;
+  background: black;
+  color: #f0f8ff;
+}
+
+.comp-desc {
+  height: 14rem;
+  overflow: auto;
+  background: #f5f5f5;
+}

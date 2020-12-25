@@ -1,0 +1,151 @@
+.policy-table-button {
+  cursor: pointer;
+  color: $white;
+  padding: 4px 7px;
+  font-size: 18px;
+
+  &:hover {
+    color: $mid-light-grey;
+  }
+}
+
+.actions-table-button {
+  cursor: pointer;
+  color: $bright-blue;
+  font-size: 20px;
+
+  &:hover {
+    color: $dark-blue;
+  }
+}
+
+.tooltip-info-button {
+  cursor: pointer;
+  color: $bright-blue;
+  padding: 4px 5px;
+}
+
+.link-button {
+  cursor: pointer;
+  color: $orange;
+  text-decoration: underline;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+%btn-primary-shared {
+  color: $white;
+  background-color: #353F5B;
+  border-color: #353F5B;
+  box-shadow: none;
+}
+
+.btn-primary {
+  padding: 10px 60px;
+  color: $white;
+  background-color: #57C1E8;
+  border-color: #57C1E8;
+  text-shadow: 0 1px 0 #fff;
+  background-image: none;
+
+  &:hover, &:focus {
+    @extend %btn-primary-shared;
+  }
+
+  &.active, &:active, {
+    @extend %btn-primary-shared;
+
+    &:hover, &:focus {
+      @extend %btn-primary-shared;
+    }
+  }
+}
+
+%btn-warning-shared {
+  color: #F2784B;
+  background-color: $white;
+  border-color: #F2784B;
+  box-shadow: none;
+}
+
+.btn-warning {
+  color: $white;
+  background-color: #F2784B;
+  border-color: #F2784B;
+  text-shadow: 0 1px 0 #fff;
+  background-image: none;
+  box-shadow: none;
+
+  &:hover, &:focus {
+    @extend %btn-warning-shared;
+  }
+
+  &.active, &:active, {
+    @extend %btn-warning-shared;
+
+    &:hover, &:focus {
+      @extend %btn-warning-shared;
+    }
+  }
+}
+
+%btn-default-shared {
+  color: $white;
+  background-color: #A7A7A7;
+  border-color: #A7A7A7;
+  box-shadow: none;
+}
+
+.btn-default {
+  font-size: 12px;
+  color: $white;
+  background-color: #A1A1A1;
+  border-color: #A1A1A1;
+  text-shadow: 0 1px 0 #fff;
+  background-image: none;
+  box-shadow: none;
+
+  &:hover, &:focus {
+    @extend %btn-default-shared;
+  }
+
+  &.active, &:active, {
+    @extend %btn-default-shared;
+
+    &:hover, &:focus {
+      @extend %btn-default-shared;
+    }
+  }
+}
+
+%btn-info-shared {
+  color: $white;
+  background-color: $bright-blue;
+  border-color: $bright-blue;
+  box-shadow: none;
+}
+
+.btn-info {
+  color: $bright-blue;
+  background-color: $white;
+  border-color: $bright-blue;
+  text-shadow: 0 1px 0 #fff;
+  background-image: none;
+  box-shadow: none;
+
+  &:hover, &:focus {
+    @extend %btn-info-shared;
+  }
+
+  &.active, &:active, {
+    @extend %btn-info-shared;
+
+    &:hover, &:focus {
+      @extend %btn-info-shared;
+    }
+  }
+}

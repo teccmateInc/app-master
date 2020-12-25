@@ -1,0 +1,58 @@
+.navbar-brand.agency-comp-logo {
+  //background-image: url("../../static/img/logo.png");
+  background-repeat: no-repeat;
+  background-position: 0px 17px;
+  cursor: pointer;
+  height: 65px;
+  width: 300px;
+}
+
+.login-logo-container {
+  background-color: $background;
+  width: 100%;
+  border-radius: 3% 3% 0 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: $white;
+}
+
+.login-logo {
+  //background-image: url("../../static/img/logo.png");
+  background-repeat: no-repeat;
+  display: block;
+  margin: 15px auto;
+  width: 186px;
+  height: 34px;
+}
+
+.header-nav {
+  float: right;
+}
+
+.header-nav-button {
+  cursor: pointer;
+  color: #5D6B78;
+  padding: 16px 6px;
+
+  &:hover {
+    color: #57C1E8;
+  }
+}
+
+.contacts-list-header-button {
+  cursor: pointer;
+  color: $white;
+
+  &:hover {
+    color: $mid-light-grey;
+  }
+
+  &.disabled {
+    cursor: pointer;
+    opacity: .50;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}

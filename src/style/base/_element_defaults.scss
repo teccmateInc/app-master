@@ -1,0 +1,32 @@
+tr {
+  height: 33px;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  padding: 6px;
+}
+
+.react-bs-table .react-bs-container-header > table > thead > tr > th .filter {
+  padding: 2px;
+  height: 24px;
+}
+
+.table > thead > tr > th {
+  background-color: $grey;
+  color: $white;
+  font-weight: normal;
+}
+
+.table-bordered > tfoot > tr > th {
+  background-color: #999999;
+  color: $white;
+}
+
+.control-label {
+  font-weight: 100;
+  color: #888888;
+}
+
+.form-control {
+  color: #222222;
+}

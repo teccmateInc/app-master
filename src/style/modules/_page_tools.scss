@@ -1,0 +1,128 @@
+.page-tools-bar {
+  background: $bright-blue;
+  height: 40px;
+  width: 100%;
+  color: $white;
+}
+
+.page-tools-title {
+  padding: 9px 0 0 15px;
+  font-size: 16px;
+  float: left;
+}
+
+.page-tools {
+  float: right;
+  padding: 0 7px;
+  margin-top: -2px;
+}
+
+.page-tools-add-action {
+  float: left;
+  height: 100%;
+  background-color: #F2784B;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.page-tools-button {
+  cursor: pointer;
+  color: $white;
+  font-size: 23px;
+  padding: 12px 8px;
+
+  &:hover {
+    color: $mid-light-grey;
+  }
+
+  &.disabled {
+    cursor: pointer;
+    opacity: .50;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.page-tools-icon {
+  color: $white;
+  font-size: 18px;
+  padding-right: 12px;
+}
+
+.profile-page-title {
+  padding: 20px 0px 10px 0px;
+  font-size: 20px;
+  color: $bright-blue;
+}
+
+.profile-page-button {
+  color: $orange;
+  cursor: pointer;
+}
+
+.side-bar-fields {
+  padding: 0 10px;
+  border-style: solid;
+  border-width: 0 2px 2px 2px;
+  border-color: #ddd;
+}
+
+.reports-total-box {
+  padding: 5px 10px;
+  color: $white;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #4095B6;
+}
+
+.col-hidden {
+  display: none;
+}
+
+.col-bold {
+  font-weight: bold;
+}
+
+.col-light {
+  color: #999999;
+}
+
+.horizontal-dash-line {
+  background-image: linear-gradient(to right, #d6cdcd 80%, rgba(255, 255, 255, 0) 20%);
+  background-position: top;
+  background-size: 18px 1px;
+  background-repeat: repeat-x;
+  font-size: 1px;
+}
+
+.show-info-light {
+  font-weight: 100;
+  color: #888888;
+}
+
+.show-info-green {
+  font-weight: 900;
+  color: #78BF43;
+}
+
+.show-info-blue {
+  font-weight: 900;
+  color: #54ADC5;
+}
+
+.show-info-bold {
+  font-weight: 900;
+  color: black;
+}
+
+.overflow-visible {
+  overflow: visible;
+}
+
+.tooltip-box-large div.tooltip-inner {
+  max-width: 400px;
+}

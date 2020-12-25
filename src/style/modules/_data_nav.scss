@@ -1,0 +1,38 @@
+.data-nav {
+  &.nav-pills > li {
+    padding: 0px 60px 0px 0px;
+    background: transparent;
+
+    &.active {
+      background: transparent;
+
+      & a {
+        color: $bright-blue;
+      }
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    &:hover {
+      background: transparent;
+    }
+
+    & a {
+      background: transparent !important;
+      color: $mid-grey;
+
+    }
+
+    &.active > a {
+      &:focus {
+        background: transparent !important;
+      }
+
+      &:hover {
+        background: transparent !important;
+      }
+    }
+  }
+}

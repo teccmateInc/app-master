@@ -1,0 +1,37 @@
+.main-nav {
+  &.nav-pills > li {
+    background: $mid-dark-grey;
+
+    &.active {
+      background: $white;
+
+      & a {
+        color: $bright-blue;
+      }
+
+      &:hover {
+        background: $white;
+      }
+    }
+
+    &:hover {
+      background: $bright-blue;
+    }
+
+    & a {
+      padding: 10px 35px;
+      background: transparent !important;
+      color: $white;
+    }
+
+    &.active > a {
+      &:focus {
+        background: transparent !important;
+      }
+
+      &:hover {
+        background: transparent !important;
+      }
+    }
+  }
+}
