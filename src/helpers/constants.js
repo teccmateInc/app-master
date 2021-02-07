@@ -91,6 +91,187 @@ export const HELP_NAV = [
   },
 ]
 
+const DATA_AGENTS_SUB_MENU = [
+  {
+    name: 'Detail',
+    key: 'detail',
+  },
+  {
+    name: 'Policies',
+    key: 'policies',
+  },
+  {
+    name: 'Licenses',
+    key: 'licenses',
+  },
+  {
+    name: 'Appointments',
+    key: 'appointments',
+  },
+  {
+    name: 'E&O',
+    key: 'e&o',
+  },
+  {
+    name: 'Commissions',
+    key: 'commissions',
+  },
+]
+
+const DATA_SUB_MENU = [
+  {
+    name: 'Individuals',
+    key: 'individuals',
+  },
+  {
+    name: 'Groups',
+    key: 'groups',
+  },
+  {
+    name: 'Carriers',
+    key: 'carriers',
+  },
+  {
+    name: 'Agents',
+    key: 'agents',
+    sub_menu: DATA_AGENTS_SUB_MENU,
+  },
+  {
+    name: 'Agencies',
+    key: 'agencies',
+  },
+  {
+    name: 'Types/Sub-Types',
+    key: 'Types/Sub-Types',
+  },
+]
+
+const COMMISSION_COMP_PALNS_SUB_MENU = [
+  {
+    name: '% of Premium',
+    key: 'contacts',
+    path: 'percent-of-premium',
+  },
+  {
+    name: 'Graded',
+    key: 'graded',
+  },
+  {
+    name: 'Fee',
+    key: 'fee',
+  },
+  {
+    name: 'MA/PDP',
+    key: 'ma/pdp',
+  },
+  {
+    name: 'Target Premium',
+    key: 'target-premium',
+  },
+]
+
+const COMMISSION_SUB_MENU = [
+  {
+    name: 'Comp Plans',
+    key: 'contacts',
+    sub_menu: COMMISSION_COMP_PALNS_SUB_MENU,
+  },
+  {
+    name: 'Import',
+    key: 'import',
+  },
+  {
+    name: 'Posting',
+    key: 'posting',
+    path: 'posting',
+  },
+  {
+    name: 'Statements',
+    key: 'statements',
+    path: 'statements',
+  },
+]
+
+const REPORTS_SUB_MENU = [
+  {
+    name: 'Analytics',
+    key: 'analytics',
+  },
+  {
+    name: 'Revenue Projection',
+    key: 'revenue-projections',
+  },
+  {
+    name: 'Expected vs Actual',
+    key: 'expected-commissions',
+  },
+  {
+    name: 'Missing',
+    key: 'missing',
+  },
+  {
+    name: 'Debit',
+    key: 'debit',
+  },
+  {
+    name: 'Pending',
+    key: 'pending',
+  },
+]
+
+const Agency_Pay_SUB_MENU = [
+  {
+    name: 'Comp Splits',
+    key: 'comp-splits',
+  },
+  {
+    name: 'Commission Statements',
+    key: 'commission-statements',
+  },
+  {
+    name: 'Reports',
+    key: 'reports',
+  },
+]
+
+export const SIDE_MENU = [
+  {
+    name: 'Home',
+    key: 'contacts',
+  },
+  {
+    name: 'POLICIES',
+    key: 'policies',
+  },
+  {
+    name: 'DATA',
+    key: 'data',
+    path: 'contacts',
+    sub_menu: DATA_SUB_MENU,
+  },
+  {
+    name: 'Commissions',
+    key: 'commissions',
+    path: 'expected-commissions',
+    sub_menu: COMMISSION_SUB_MENU,
+  },
+  {
+    name: 'Reports',
+    key: 'help-reports',
+    sub_menu: REPORTS_SUB_MENU,
+  },
+  {
+    name: 'Agency Pay',
+    key: 'agency-pay',
+    path: 'expected-commissions',
+    sub_menu: Agency_Pay_SUB_MENU,
+  },
+  {
+    name: 'Help',
+    key: 'help-contact-us',
+  },
+]
+
 export const UNAUTHENTICATED_PAGES = [
   '/login',
   '/forgot-password',
@@ -143,3 +324,5 @@ export const PRIMARY_FIELD_OPTIONS = {
 export const STATUS_SUCCESS = 'success'
 export const STATUS_ERROR = 'error'
 export const STATUS_FAILURE = 'failure'
+
+export const DEFAULT_INCORRECT_INPUT_MESSAGE = 'Incorrect input provided';

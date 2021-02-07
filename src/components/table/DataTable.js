@@ -4,8 +4,6 @@ import { Col, Container, Row } from 'react-bootstrap'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider from 'react-bootstrap-table2-toolkit'
 import TableSidebar from '../table/TableSidebar'
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
-import './table.scss'
 
 const DataTable = ({
   dataName,
@@ -21,8 +19,6 @@ const DataTable = ({
   tableWidth,
   sidebarWidth,
   searchEnabled,
-  rowEvents,
-  sideBarVisible = true,
   // exportEnabled,
   multiSelectEnabled,
   duplicateEnabled,
@@ -32,9 +28,10 @@ const DataTable = ({
   const [currentSelected, setCurrentSelected] = useState([selected])
   const [hideSelectColumn, setHideSelectColumn] = useState(true)
 
-  useEffect(() => {
-    loadData()
-  }, [])
+  useEffect(
+    () => {
+      loadData()
+    }, [])
 
   const defaultOnSelect = (row, isSelect, rowIndex, e) => {
     loadSingle(row, isSelect, rowIndex, e)
@@ -62,12 +59,12 @@ const DataTable = ({
     clickToSelect: true,
     hideSelectColumn: hideSelectColumn || !multiSelectEnabled,
     selected: currentSelected,
-    onSelect: onSelect ? onSelect : defaultOnSelect,
+        onSelect: onSelect ? onSelect : defaultOnSelect,
     // TODO convert to class
     style: {
-      // filter: "brightness(85%)",
-      // boxShadow: "inset 0 0 10px 5px #dddddd",
-      backgroundColor: '#ffe3be',
+      filter: 'brightness(85%)',
+      padding: '.0em solid #dddddd',
+            boxShadow: 'inset 0 0 10px 5px #dddddd'
     },
   }
 
@@ -79,68 +76,59 @@ const DataTable = ({
 
   // TODO column wrapping when page not wide enough
   return (
-    <ToolkitProvider
-      keyField="id"
-      columns={columns}
-      data={data}
-      options={tableOptions}
-      bootstrap4
-      // exportCSV
-      // search
-      // TODO pagination
-    >
-      {(props) => (
-        <Container fluid>
-          <Row className="d-flex justify-content-between">
-            <Col xs={tableWidth}>
-              <BootstrapTable
-                {...props.baseProps}
-                selectRow={selectRow}
-                striped
-                filter={filterFactory()}
-                condensed
-                hover
-                rowEvents={rowEvents}
-                rowStyle={{ backgroundColor: '#ffffff' }}
-                rowClasses={'tbl-row'}
-                headerClasses={'tbl-header'}
-                noDataIndication={noDataMessage}
-              />
-            </Col>
+          <ToolkitProvider
+            keyField='id'
+            columns={columns}
+            data={data}
+            options={tableOptions}
+            bootstrap4
+            // exportCSV
+            search
+            // TODO pagination
+          >
+            {
+              (props) => (
+                    <Container fluid>
+                        <Row className="d-flex justify-content-between">
+                    <Col
+                      xs={tableWidth}>
 
-            {sideBarVisible ? (
-              <TableSidebar
-                text={dataName}
-                selected={selected}
-                openAddModal={openAddModal}
-                openEditModal={openEditModal}
-                openDeleteModal={openDeleteModal}
-                hideSelectColumn={hideSelectColumn}
-                setHideSelectColumn={setHideSelectColumn}
-                searchProps={props.searchProps}
-                // csvProps={props.csvProps}
-                width={sidebarWidth}
-                searchEnabled={searchEnabled}
-                // exportEnabled={exportEnabled}
-                multiSelectEnabled={multiSelectEnabled}
-                duplicateEnabled={duplicateEnabled}
-              />
-            ) : (
-              <Col xs={8}>
-                <div></div>
-              </Col>
-            )}
-          </Row>
-        </Container>
-      )}
-    </ToolkitProvider>
-  )
-}
+                      <BootstrapTable
+                        {...props.baseProps}
+                        selectRow={selectRow}
+                                    striped
+                                    condensed
+                                    hover
+                        noDataIndication={noDataMessage}/>
+                    </Col>
+
+                    <TableSidebar
+                      text={dataName}
+                      selected={selected}
+                      openAddModal={openAddModal}
+                      openEditModal={openEditModal}
+                      openDeleteModal={openDeleteModal}
+                      hideSelectColumn={hideSelectColumn}
+                      setHideSelectColumn={setHideSelectColumn}
+                      searchProps={props.searchProps}
+                      // csvProps={props.csvProps}
+                      width={sidebarWidth}
+                      searchEnabled={searchEnabled}
+                      // exportEnabled={exportEnabled}
+                      multiSelectEnabled={multiSelectEnabled}
+                      duplicateEnabled={duplicateEnabled}/>
+                  </Row>
+                </Container>
+              )
+            }
+          </ToolkitProvider>
+        )
+      }
 
 DataTable.propTypes = {
   dataName: string.isRequired,
   data: array.isRequired,
-  // columns: array.isRequired,
+  columns: array.isRequired,
   selected: object,
   setSelected: func.isRequired,
   loadData: func.isRequired,

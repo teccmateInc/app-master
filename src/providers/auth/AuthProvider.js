@@ -7,10 +7,9 @@ import AuthContext from './AuthContext'
 toastr.options.closeButton = true
 
 const AuthProvider = ({ children }) => {
+  let prevUser = localStorage.getItem('user')
   const [lastUserName, setLastUserName] = useState(
-    localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user')).email
-      : null
+    localStorage.getItem('prevUser') ? localStorage.getItem('prevUser') : null
   )
 
   const [authenticatedUser, setAuthenticatedUser] =
@@ -82,8 +81,6 @@ const AuthProvider = ({ children }) => {
       loadingWrapper(async () => {
         try {
           console.log('LOGOUT')
-          let prevUser = JSON.parse(localStorage.getItem('user'))
-          localStorage.setItem('prevUser', prevUser.email)
           const { status, data } = await postWrapper('/logout')
         } catch (err) {
           toastr.error(

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
 import { useHistory, useLocation } from 'react-router-dom'
 import {
@@ -9,10 +9,12 @@ import {
 } from '../../helpers/constants'
 import { AuthContext } from '../../providers/auth'
 import LogoutButton from '../Header/LogoutButton'
-import DataNavigation from './DataNavigation'
-import renderMenuItem from './renderMenuItem'
+// import DataNavigation from './DataNavigation'
+// import renderMenuItem from './renderMenuItem'
+import SideBar from './SideBar'
 
 const MainNavigation = () => {
+  const [isOpen, isSideBarOpen] = useState(false)
   const { logout } = useContext(AuthContext)
 
   const { authenticatedUser } = useContext(AuthContext)
@@ -60,27 +62,31 @@ const MainNavigation = () => {
   }
 
   return (
-    <Navbar bg="light" expand="sm" style={{ marginBottom: '1em' }}>
-      <Navbar.Brand href="/">
-        <div className="login-logo" />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse
-        id="basic-navbar-nav"
-        className="flex-column align-items-start ml-lg-2 ml-0"
+    <>
+      <Navbar
+        fixed='top'
+        bg='dark'
+        expand='sm'
+        style={{
+          marginBottom: '1em',
+          display: 'flex',
+          justifyContent: 'space-between',
+          // width: '100%',
+          zIndex: '1',
+        }}
       >
-        <Nav
-          fill={true}
-          activeKey={selected}
-          variant="tabs"
-          className="justify-content-center"
-        >
-          {MAIN_NAV.map(renderMenuItem)}
-        </Nav>
-        <DataNavigation />
-      </Navbar.Collapse>
-      <LogoutButton />
-    </Navbar>
+        <div onClick={() => isSideBarOpen(true)}>
+          <i
+            className='fa fa-bars'
+            aria-hidden='true'
+            color='white'
+            style={{ color: '#f2f5f8', fontSize: '20px' }}
+          ></i>
+        </div>
+        <LogoutButton />
+      </Navbar>
+      <SideBar open={isOpen} onClickOutSide={(v) => isSideBarOpen(v)} />
+    </>
   )
 }
 

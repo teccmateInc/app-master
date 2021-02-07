@@ -23,7 +23,13 @@ const AddCarrierModal = ({
           errors={errors}
           name='name'
           label='Carrier Name'
-          rules={{ required: true }}
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}
           autoFocus={true}/>
       </div>}/>
   )

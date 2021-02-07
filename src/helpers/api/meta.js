@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  apiRoot,
-  STATUS_ERROR,
-  STATUS_FAILURE,
-  STATUS_SUCCESS,
-} from '../constants'
+import { apiRoot, STATUS_ERROR, STATUS_FAILURE, STATUS_SUCCESS } from '../constants'
 
 const headers = {
   'Content-Type': 'application/json',
@@ -16,7 +11,7 @@ const authHeaders = {
 }
 
 // assigns the authorization token to the API Headers
-export const updateHeaderToken = (token) => {
+export const updateHeaderToken = token => {
   headers.Authorization = token
 }
 
@@ -53,16 +48,15 @@ const configAuthPOST = {
 // handles the fetch promise resolution whether successful or not.
 // if it's not successful, it will throw an error with
 // the APIs given error message.
-const fetchResponse = async (res) => {
+const fetchResponse = async res => {
   if (res.status == 302) {
-    console.log('GOT A 302!!!')
-    location.replace(res.headers.get('Location'))
-    return
+      console.log("GOT A 302!!!")
+      location.replace(res.headers.get('Location'))
+      return
   }
 
   if (res.ok) {
     try {
-      console.log('OK')
       return await res.json()
     } catch (err) {
       // no JSON
@@ -92,7 +86,7 @@ const fetchResponse = async (res) => {
   throw Object.assign(error, { res, json })
 }
 
-const fetchAuthResponse = async (res) => {
+const fetchAuthResponse = async res => {
   if (res.status.toString().startsWith('5')) {
     console.error('Could not fetch auth response.')
     console.error(res)
@@ -109,7 +103,7 @@ const fetchAuthResponse = async (res) => {
   if (res.status === 401 || res.status === 403) {
     console.warn('in if 401 or 403')
     console.warn(res)
-    // logout();
+    logout()
     localStorage.removeItem('user')
     return {
       status: STATUS_FAILURE,
@@ -134,21 +128,43 @@ const fetchAuthResponse = async (res) => {
 }
 
 export const fetchWrapper = async (url, config = configGET, body) => {
-  const res = await fetch(`${apiRoot}${url}`)
-  console.log(res)
+  const res = await fetch(`${apiRoot}${url}`, {
+    ...config,
+    body,
+  })
   return fetchResponse(res)
 }
 
-export const deleteWrapper = (url) => fetchWrapper(url, configDELETE)
+export const deleteWrapper = url => (
+  fetchWrapper(
+    url,
+    configDELETE,
+  )
+)
 
-export const patchWrapper = (url, body = '') =>
-  fetchWrapper(url, configPATCH, JSON.stringify(body))
+export const patchWrapper = (url, body = '') => (
+  fetchWrapper(
+    url,
+    configPATCH,
+    JSON.stringify(body),
+  )
+)
 
-export const postWrapper = (url, body = '') =>
-  fetchWrapper(url, configPOST, JSON.stringify(body))
+export const postWrapper = (url, body = '') => (
+  fetchWrapper(
+    url,
+    configPOST,
+    JSON.stringify(body),
+  )
+)
 
-export const putWrapper = (url, body) =>
-  fetchWrapper(url, configPUT, JSON.stringify(body))
+export const putWrapper = (url, body) => (
+  fetchWrapper(
+    url,
+    configPUT,
+    JSON.stringify(body),
+  )
+)
 
 export const fetchAuthWrapper = async (url, body) => {
   try {
@@ -164,9 +180,11 @@ export const fetchAuthWrapper = async (url, body) => {
   }
 }
 
-export const postAuthWrapper = (url, body) => {
-  console.log('Login Body', body)
-  return fetchAuthWrapper(url, body)
+export const postAuthWrapper = (url, body = '') => {
+  return fetchAuthWrapper(
+    url,
+    body,
+  )
 }
 
 // NOTE - The API will expect arrays in two different ways:
@@ -176,25 +194,22 @@ export const postAuthWrapper = (url, body) => {
 // This depends on how that param is configured in the back end!
 // If you need to convert an array and pass it as a comma spaced string of values,
 // you can arr.join(',')
-export const makeQueryString = (s) => {
+export const makeQueryString = s => {
   const t = typeof s !== 'string' ? JSON.stringify(s) : s
   return encodeURIComponent(t)
 }
 
 // when using the 2d search array in query params,
 // use this method to quickly build the search criteria.
-export const makeSearchObject = (
-  field = null,
-  value = null,
-  operator = 'LIKE'
-) =>
+export const makeSearchObject = (field = null, value = null, operator = 'LIKE') => (
   value !== null && field !== null
-    ? {
-        field,
-        operator,
-        value,
-      }
+    ? ({
+      field,
+      operator,
+      value,
+    })
     : null
+)
 
 // builds a query string from the array of flags passed to it.
 // this also adds an 'expires' query to prevent any sort of caching.

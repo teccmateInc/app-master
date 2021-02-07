@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { Col, Form } from 'react-bootstrap'
 import { Controller } from 'react-hook-form'
 import { Typeahead } from 'react-bootstrap-typeahead'
+import { DEFAULT_INCORRECT_INPUT_MESSAGE } from '../../helpers/constants'
 
 const TypeaheadField = ({
   control,
@@ -25,11 +26,13 @@ const TypeaheadField = ({
       loadData()
     }, [])
 
+  const error = error[name]
+
   return (
     <div>
       <Form.Row
-        className={errors[name] && 'error' || ''}
-        validationstate={errors[name] && 'error'}>
+        className={error && 'error' || ''}
+        validationstate={error && 'error'}>
         <Col
           as={Form.Label}
           sm={labelSize}>
@@ -60,7 +63,7 @@ const TypeaheadField = ({
         </Col>
       </Form.Row>
       {
-        errors[name] &&
+        error &&
         <Form.Row>
           <Col sm={{
             span: fieldSize,
@@ -74,7 +77,7 @@ const TypeaheadField = ({
           }}>
             <Form.Text
               muted={true}
-              style={{ color: 'red' }}>Your input is required</Form.Text>
+              style={{ color: 'red' }}>{error.message || DEFAULT_INCORRECT_INPUT_MESSAGE}</Form.Text>
           </Col>
         </Form.Row>
       }

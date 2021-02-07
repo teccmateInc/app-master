@@ -25,7 +25,13 @@ const EditProducerModal = ({
           name='firstName'
           label='First Name'
           defaultValue={`${selected.firstName}`}
-          rules={{ required: true }}
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}
           autoFocus={true}/>
         {/* TODO make autoFocus work again */}
         <BasicTextField
@@ -40,7 +46,13 @@ const EditProducerModal = ({
           name='lastName'
           label='Last Name'
           defaultValue={`${selected.lastName}`}
-          rules={{ required: true }}/>
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}/>
       </div>}/>
   )
 }

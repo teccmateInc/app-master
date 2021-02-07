@@ -6,13 +6,13 @@ const LogoutButton = () => {
   const { logout } = useContext(AuthContext)
 
   return (
-    <LinkContainer to="/">
+    <LinkContainer to='/' style={{ color: '#f2f5f8' }}>
       <i
         onClick={logout}
-        className="header-nav-button fa fa-power-off fa-2x"
-        title="Logout"
+        className='header-nav-button fa fa-power-off'
+        title='Logout'
       >
-        <span style={{ fontFamily: 'Roboto' }}>LOGOUT</span>
+        <span style={{ fontFamily: 'Roboto', marginLeft: '6px' }}>LOGOUT</span>
       </i>
     </LinkContainer>
   )

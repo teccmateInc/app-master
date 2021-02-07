@@ -23,7 +23,13 @@ const AddProducerModal = ({
           errors={errors}
           name='firstName'
           label='First Name'
-          rules={{ required: true }}
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}
           autoFocus={true}/>
         {/* TODO make autoFocus work again */}
         <BasicTextField
@@ -36,7 +42,13 @@ const AddProducerModal = ({
           errors={errors}
           name='lastName'
           label='Last Name'
-          rules={{ required: true }}/>
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}/>
       </div>}/>
   )
 }

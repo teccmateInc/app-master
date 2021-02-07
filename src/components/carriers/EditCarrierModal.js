@@ -25,7 +25,13 @@ const EditCarrierModal = ({
           name='name'
           label='Carrier Name'
           defaultValue={`${selected.name}`}
-          rules={{ required: true }}
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}
           autoFocus={true}/>
       </div>}/>
   )

@@ -23,7 +23,13 @@ const AddProductTypeModal = ({
           errors={errors}
           name='name'
           label='Product Type'
-          rules={{ required: true }}
+          rules={{ 
+            required: true, 
+            minLength: { 
+              value: 3, 
+              message: 'Minimum length of input should be 3' 
+            } 
+          }}
           autoFocus={true}/>
       </div>}/>
   )

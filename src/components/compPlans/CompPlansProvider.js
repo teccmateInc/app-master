@@ -1,6 +1,6 @@
 import { LoadingContext } from 'components/LoadingContext'
 import { node } from 'prop-types'
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useContext, useState, forwardRef } from 'react'
 import Badge from 'react-bootstrap/Badge'
 import { deleteWrapper, fetchWrapper, postWrapper, putWrapper } from '../../helpers/api'
 import { ModalContext } from '../../providers/modal'
@@ -44,12 +44,15 @@ const CompPlansProvider = ({ children }) => {
         <TooltipWrapper
           triggerId={'comp-plan-policy-count-' + row.id}
           tooltip={'Policy count: ' + row.policyCount}
-        >
-          <>
-            <Badge variant="light">{row.policyCount}</Badge>
-            <span className="sr-only">unread messages</span>
-          </>
-        </TooltipWrapper>
+          TriggerComp={forwardRef((props, ref) => {
+            return (
+              <>
+                <Badge ref={ref} {...props} variant="light">{row.policyCount}</Badge>
+                <span className="sr-only">unread messages</span>
+              </>
+            );
+          })}
+        />
       </div>
     )
   }

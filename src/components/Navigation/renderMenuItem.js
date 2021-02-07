@@ -4,9 +4,9 @@ import { Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../providers/auth/AuthContext'
 
-const renderMenuItem = ({ name, key, path }) => {
+const renderMenuItem = ({ name, key, path, sub_menu }) => {
   const { authenticatedUser } = useContext(AuthContext)
-
+  console.log(sub_menu)
   // Not show Reports or Profile menu if an Assistant
   if (
     authenticatedUser.userType === 'A' &&
@@ -16,7 +16,7 @@ const renderMenuItem = ({ name, key, path }) => {
   } else {
     return (
       <Nav.Item key={key}>
-        <Nav.Link as={Link} to={path ? path : key} className="py-0 pr-3">
+        <Nav.Link as={Link} to={path ? path : key} className='py-0 pr-3'>
           {name}
         </Nav.Link>
       </Nav.Item>

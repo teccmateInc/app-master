@@ -5,26 +5,30 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 const TooltipWrapper = ({
   triggerId,
   tooltip,
-  children,
+  TriggerComp
 }) => {
-  const renderTooltip = () => (
-    <Tooltip id={triggerId}>
+  const renderTooltip = props => (
+    <Tooltip id={triggerId} {...props}>
       {tooltip}
     </Tooltip>
   )
 
   return (
-    <>
-      <OverlayTrigger
-        delay={{
-          show: 250,
-          hide: 400,
-        }}
-        overlay={renderTooltip}
-      >
-        {children}
-      </OverlayTrigger>
-    </>
+    <OverlayTrigger
+      placement='right'
+      delay={{
+        show: 250,
+        hide: 400,
+      }}
+      overlay={renderTooltip}
+    >
+      {({ ref, ...triggerHandler }) => (
+        <TriggerComp
+          ref={ref}
+          {...triggerHandler}
+          />
+      )}
+    </OverlayTrigger>
   )
 }
 

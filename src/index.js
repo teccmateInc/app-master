@@ -13,13 +13,13 @@ import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import 'regenerator-runtime/runtime.js'
 import 'whatwg-fetch'
+toastr.options.toastClass = 'toastr'
 
 require('!style-loader!css-loader!sass-loader!./style/app.scss')
 
 toastr.options.closeButton = true
 toastr.options.timeOut = 3000 // How long the toast will display without user interaction
 toastr.options.extendedTimeOut = 500 // How long the toast will display after a user hovers over it
-toastr.options.toastClass = 'toastr'
 
 // const store = configureStore()
 const store = null
@@ -31,12 +31,12 @@ render(
         <CookiesProvider>
           <AuthProvider>
             <Router>
-              <App />
+              <App/>
             </Router>
           </AuthProvider>
         </CookiesProvider>
       </PopoverProvider>
     </LoadingProvider>
   </GlobalErrorBoundary>,
-  document.getElementById('app')
+  document.getElementById('app'),
 )

@@ -13,11 +13,19 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({ email: null, password: null })
   const [username, setUsername] = useState(lastUserName ? lastUserName : '')
   const [password, setPassword] = useState('')
+  const [rememberMe, setRememberMe] = useState(lastUserName !== null)
 
   useEffect(() => {
     let prevUser = localStorage.getItem('prevUser')
-    if (prevUser) setUsername(prevUser)
-  }, [])
+    if (lastUserName === null) return
+    else if (!rememberMe && prevUser !== null && username !== null) {
+      localStorage.removeItem('prevUser')
+      setUsername('')
+    }
+    return () => {
+      setErrors({ email: null, password: null })
+    }
+  }, [rememberMe])
 
   const submitForm = async (e) => {
     let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
@@ -32,11 +40,14 @@ const LoginPage = () => {
       setErrors({ email: null, password: 'Invalid Password!' })
     } else {
       try {
-        console.log('LoginPage submitForm 1')
+        console.log('LoginPage submitForm 1', rememberMe)
         await login(username, password)
+        rememberMe
+          ? localStorage.setItem('prevUser', username)
+          : localStorage.removeItem('prevUser')
+        console.log('object', rememberMe)
         console.log('LoginPage submitForm 2')
         history.push('/contacts')
-        setErrors({ email: null, password: null })
         console.log('LoginPage submitForm 3')
       } catch (err) {
         // TODO replace with toastr call
@@ -49,8 +60,8 @@ const LoginPage = () => {
   return (
     <div>
       <div className={'login-page'}>
-        <div className="login-logo-container">
-          <div className="login-logo" />
+        <div className='login-logo-container'>
+          <div className='login-logo' />
         </div>
         {/* TODO add CSS class*/}
         <div style={{ padding: '40px 60px' }}>
@@ -60,17 +71,17 @@ const LoginPage = () => {
               <Form.Label>E-Mail</Form.Label>
               <Form.Control
                 isInvalid={errors.email && true}
-                id="username"
-                type="email"
+                id='username'
+                type='email'
                 value={username ? username : ''}
                 onChange={(e) => setUsername(e.target.value)}
-                autoFocus={!username}
+                autoFocus={!username && !rememberMe}
                 autoComplete={'username'}
               />
               {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
               <Form.Control.Feedback>
                 <span
-                  className="fa fa-envelope login-icons"
+                  className='fa fa-envelope login-icons'
                   style={{
                     fontSize: '25px',
                     color: '#CCCCCC',
@@ -81,9 +92,9 @@ const LoginPage = () => {
             <Form.Group>
               <Form.Label>Password</Form.Label>
               <Form.Control
-                type="password"
+                type='password'
                 isInvalid={errors.password && true}
-                id="password"
+                id='password'
                 value={password ? password : ''}
                 onChange={(e) => setPassword(e.target.value)}
                 autoFocus={username ? true : false}
@@ -94,7 +105,7 @@ const LoginPage = () => {
               )}
               <Form.Control.Feedback>
                 <span
-                  className="fa fa-lock"
+                  className='fa fa-lock'
                   style={{
                     fontSize: '28px',
                     color: '#CCCCCC',
@@ -107,6 +118,15 @@ const LoginPage = () => {
             {/*        Forgot Password?*/}
             {/*    </Button>*/}
             {/*</LinkContainer>*/}
+            <Form.Group controlId='rememberLastUsername'>
+              <Form.Check
+                type='checkbox'
+                label='Remember Me'
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+              />
+            </Form.Group>
+
             <div
               style={{
                 marginTop: '40px',
@@ -115,9 +135,9 @@ const LoginPage = () => {
               }}
             >
               <Button
-                variant="primary"
-                id="LOGIN"
-                type="submit"
+                variant='primary'
+                id='LOGIN'
+                type='submit'
                 style={{ float: 'right' }}
                 disabled={false}
                 // disabled={!validateLoginForm({username, password})}
